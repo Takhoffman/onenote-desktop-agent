@@ -160,3 +160,7 @@ Microsoft OneNote desktop automation, OneNote COM API, OneNote PowerShell automa
 ## Status
 
 This is an early public package. The helper scripts cover common non-destructive OneNote COM operations; destructive operations such as deleting notebooks, sections, pages, or page content are intentionally not wrapped as default workflows.
+
+## License
+
+MIT License. See `LICENSE`.

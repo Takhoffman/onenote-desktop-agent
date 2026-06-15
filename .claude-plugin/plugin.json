@@ -8,7 +8,7 @@
   },
   "homepage": "https://github.com/takhoffman/onenote-desktop-agent",
   "repository": "https://github.com/takhoffman/onenote-desktop-agent",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "keywords": [
     "onenote",
     "windows",
