@@ -1,6 +1,7 @@
 ---
 name: onenote-desktop
 description: Control Microsoft OneNote desktop through direct Windows PowerShell COM automation, including raw one-off COM scripts. Use when an agent needs to inspect OneNote installation state, list notebooks/sections/pages, read or write page XML, create or update pages, navigate OneNote, search content, extract audio/media recordings, export data, or automate desktop OneNote without browser automation, localhost servers, or Office.js add-ins.
+version: 0.1.0
 ---
 
 # OneNote Desktop

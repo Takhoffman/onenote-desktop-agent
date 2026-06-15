@@ -1,0 +1,14 @@
+{
+  "name": "local-onenote-desktop",
+  "description": "Local Claude Code plugins for automating Microsoft OneNote desktop.",
+  "owner": {
+    "name": "Local"
+  },
+  "plugins": [
+    {
+      "name": "onenote-desktop",
+      "source": "./",
+      "description": "Automate desktop OneNote through Windows PowerShell COM, including hierarchy inspection, page XML, export, navigation, and media extraction."
+    }
+  ]
+}

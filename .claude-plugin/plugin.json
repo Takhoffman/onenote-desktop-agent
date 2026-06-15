@@ -1,0 +1,16 @@
+{
+  "name": "onenote-desktop",
+  "version": "0.1.0",
+  "description": "Automate Microsoft OneNote desktop through Windows PowerShell COM.",
+  "author": {
+    "name": "Local"
+  },
+  "keywords": [
+    "onenote",
+    "windows",
+    "powershell",
+    "com",
+    "notes",
+    "automation"
+  ]
+}
