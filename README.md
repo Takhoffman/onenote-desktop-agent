@@ -21,17 +21,48 @@ The stable plugin and skill name is `onenote-desktop`. The public repository nam
 - You want an AI assistant to work with your real OneNote desktop notebooks, but the assistant cannot see local notebook state.
 - You use OneNote desktop instead of OneNote web, Microsoft Graph, or cloud-first workflows.
 - You need to list notebooks, sections, and pages without clicking through the OneNote UI.
+- You need a machine-readable map of notebook structure before migration, cleanup, archiving, or review.
 - You need stable page IDs, section IDs, object IDs, or OneNote hyperlinks for automation.
+- You need to find the parent section or notebook for a page/object ID returned by search or page XML.
 - You want to read OneNote page content as XML so an agent can inspect or transform it carefully.
+- You need to preserve rich page structure, object IDs, author metadata, timestamps, tags, media references, and unknown XML while making targeted edits.
 - You need to create or update OneNote pages from scripts, meeting notes, research notes, logs, or generated summaries.
+- You need to generate a local control/status page inside OneNote so a human can inspect what the agent sees.
+- You need to open or create a local `.one` section for a reproducible automation test without touching existing notebooks.
+- You need to search OneNote content from a script and optionally include unindexed pages.
+- You need to search OneNote metadata, not just visible text.
 - You want to export OneNote pages or sections to PDF, XPS, Word, MHTML, `.one`, or `.onepkg` from an agent workflow.
+- You need batch export or audit workflows where page IDs are collected first, then published one at a time.
 - You need to extract embedded audio recordings or media files from OneNote pages for transcription, archiving, or review.
+- You need to fetch binary page content by callback ID from page XML.
+- You need to locate OneNote's default notebook folder, backup folder, or unfiled notes section from the installed desktop app.
 - You are trying to recover, inventory, or debug local OneNote files and cache locations without mutating them.
+- You need to compare OneNote cache, backup, audio-cache, or local notebook file signatures without parsing private note content.
 - You want local automation that does not require a browser session, a localhost service, a OneNote add-in, or Microsoft Graph permissions.
 - You need a repeatable way for Claude Code or Codex to check whether OneNote COM is installed and usable.
 - You want an agent to navigate OneNote desktop to a page or object so you can inspect the result in the app.
+- You want a script to open OneNote at the exact page or embedded object that an agent is discussing.
 - You need a safer alternative to blind file parsing: use OneNote COM and page XML first, and treat raw `.one` or cache probing as a last resort.
 - You want to keep private notes local while still letting an assistant help with organization, extraction, export, or page generation.
+- You need to debug whether a problem is OneNote installation, COM apartment state, open-notebook visibility, indexing, page XML shape, media paths, or cache/storage.
+
+## What The OneNote COM Surface Unlocks
+
+The helper wraps the repeatable, lower-risk operations that are easiest to validate:
+
+- `GetHierarchy`: inventory notebooks, section groups, sections, and pages.
+- `GetPageContent`: read page XML for inspection, extraction, and targeted edits.
+- `CreateNewPage` and `UpdatePageContent`: create pages and update prepared XML.
+- `FindPages` and `FindMeta`: search indexed page text and metadata.
+- `GetHierarchyParent`: climb from a page or object ID back to its parent.
+- `GetHyperlinkToObject`: create durable OneNote links for pages or page objects.
+- `GetSpecialLocation`: resolve default notebook, backup, and unfiled-notes locations.
+- `NavigateTo`: bring the desktop OneNote app to a target page or object.
+- `Publish`: export notebooks, sections, or pages to supported desktop formats.
+- `GetBinaryPageContent`: retrieve binary content referenced by callback IDs in page XML.
+- `OpenHierarchy`: open or create local notebook/section files for controlled tests.
+
+The underlying desktop interop also exposes higher-risk or less common calls such as `CloseNotebook`, `DeleteHierarchy`, `DeletePageContent`, `OpenPackage`, and `UpdateHierarchy`. Those are intentionally not promoted as default workflows. Use raw COM for them only when the user explicitly asks for that operation, the target IDs are verified, and the script is small enough to review.
 
 ## Features
 
@@ -41,8 +72,10 @@ The stable plugin and skill name is `onenote-desktop`. The public repository nam
 - Create pages and write basic page content.
 - Update page XML while preserving OneNote namespaces and IDs.
 - Search pages and metadata through the OneNote COM API.
+- Resolve parent hierarchy IDs, OneNote hyperlinks, and special OneNote folders.
 - Navigate OneNote desktop to a page, section, or object.
 - Export notebooks, sections, or pages to PDF, XPS, Word, MHTML, EMF, `.one`, or `.onepkg`.
+- Fetch binary page content by callback ID when page XML exposes it.
 - Extract embedded media or audio recordings from `MediaFile` page XML entries.
 - Probe likely OneNote local storage and cache locations read-only for troubleshooting.
 
