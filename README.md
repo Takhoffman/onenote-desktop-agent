@@ -16,6 +16,23 @@ Most OneNote automation paths assume cloud APIs, browser automation, or add-ins.
 
 The stable plugin and skill name is `onenote-desktop`. The public repository name is `onenote-desktop-agent`.
 
+## Pain Points It Solves
+
+- You want an AI assistant to work with your real OneNote desktop notebooks, but the assistant cannot see local notebook state.
+- You use OneNote desktop instead of OneNote web, Microsoft Graph, or cloud-first workflows.
+- You need to list notebooks, sections, and pages without clicking through the OneNote UI.
+- You need stable page IDs, section IDs, object IDs, or OneNote hyperlinks for automation.
+- You want to read OneNote page content as XML so an agent can inspect or transform it carefully.
+- You need to create or update OneNote pages from scripts, meeting notes, research notes, logs, or generated summaries.
+- You want to export OneNote pages or sections to PDF, XPS, Word, MHTML, `.one`, or `.onepkg` from an agent workflow.
+- You need to extract embedded audio recordings or media files from OneNote pages for transcription, archiving, or review.
+- You are trying to recover, inventory, or debug local OneNote files and cache locations without mutating them.
+- You want local automation that does not require a browser session, a localhost service, a OneNote add-in, or Microsoft Graph permissions.
+- You need a repeatable way for Claude Code or Codex to check whether OneNote COM is installed and usable.
+- You want an agent to navigate OneNote desktop to a page or object so you can inspect the result in the app.
+- You need a safer alternative to blind file parsing: use OneNote COM and page XML first, and treat raw `.one` or cache probing as a last resort.
+- You want to keep private notes local while still letting an assistant help with organization, extraction, export, or page generation.
+
 ## Features
 
 - Check whether Microsoft OneNote desktop and COM automation are available.
