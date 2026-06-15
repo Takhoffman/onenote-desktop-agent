@@ -136,7 +136,9 @@ powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\skills\onenote-de
 
 - `.claude-plugin/plugin.json`: Claude Code plugin manifest.
 - `.claude-plugin/marketplace.json`: Claude Code marketplace descriptor.
+- `.agents/plugins/marketplace.json`: Codex marketplace descriptor.
 - `.codex-plugin/plugin.json`: Codex plugin manifest.
+- `plugins/onenote-desktop/`: installable Codex marketplace package.
 - `skills/onenote-desktop/SKILL.md`: shared skill instructions for Claude Code and Codex.
 - `skills/onenote-desktop/scripts/Invoke-OneNoteCom.ps1`: main OneNote COM helper.
 - `skills/onenote-desktop/scripts/Probe-OneNoteCom.ps1`: COM method and enum probe.

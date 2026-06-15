@@ -1,0 +1,20 @@
+{
+  "name": "takhoffman",
+  "interface": {
+    "displayName": "TakHoffman"
+  },
+  "plugins": [
+    {
+      "name": "onenote-desktop",
+      "source": {
+        "source": "local",
+        "path": "./plugins/onenote-desktop"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

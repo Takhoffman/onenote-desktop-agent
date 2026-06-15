@@ -1,0 +1,4 @@
+interface:
+  display_name: "OneNote Desktop"
+  short_description: "Automate desktop OneNote with raw COM"
+  default_prompt: "Use $onenote-desktop to inspect and automate desktop OneNote notebooks."

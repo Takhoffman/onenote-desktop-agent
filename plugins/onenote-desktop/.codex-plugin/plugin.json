@@ -1,0 +1,39 @@
+{
+  "name": "onenote-desktop",
+  "version": "0.1.0",
+  "description": "Automate Microsoft OneNote desktop through Windows PowerShell COM.",
+  "author": {
+    "name": "TakHoffman",
+    "url": "https://github.com/takhoffman"
+  },
+  "homepage": "https://github.com/takhoffman/onenote-desktop-agent",
+  "repository": "https://github.com/takhoffman/onenote-desktop-agent",
+  "license": "MIT",
+  "keywords": [
+    "onenote",
+    "windows",
+    "powershell",
+    "com",
+    "notes",
+    "automation",
+    "codex",
+    "claude-code"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "OneNote Desktop",
+    "shortDescription": "Automate desktop OneNote through COM.",
+    "longDescription": "Provides Codex agents with instructions, references, and PowerShell helpers for inspecting OneNote desktop state, listing notebooks and pages, reading and updating page XML, exporting pages, navigating OneNote, and extracting page media through the OneNote COM API.",
+    "developerName": "TakHoffman",
+    "category": "Productivity",
+    "capabilities": [
+      "onenote",
+      "windows-com",
+      "powershell",
+      "page-xml",
+      "media-export"
+    ],
+    "websiteURL": "https://github.com/takhoffman/onenote-desktop-agent",
+    "defaultPrompt": "Use OneNote Desktop to inspect or automate Microsoft OneNote desktop through COM."
+  }
+}
