@@ -69,7 +69,7 @@ After publishing this repository to GitHub, install it with the Codex CLI:
 
 ```powershell
 codex plugin marketplace add https://github.com/takhoffman/onenote-desktop-agent
-codex plugin add onenote-desktop@onenote-desktop-agent
+codex plugin add onenote-desktop@takhoffman
 ```
 
 For Codex Desktop, open Plugins, add the marketplace URL, then install `onenote-desktop`:
