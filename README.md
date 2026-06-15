@@ -4,51 +4,69 @@
 
 # OneNote Desktop Agent
 
-**OneNote Desktop Agent** is a Claude Code plugin and Codex plugin for automating Microsoft OneNote desktop on Windows through Windows PowerShell and the OneNote COM API.
+Your notes are already in OneNote.
 
-Use it when an AI coding agent needs local OneNote desktop automation: inspect OneNote installation state, list notebooks, sections, and pages, read OneNote page XML, create or update pages, navigate the OneNote desktop app, export pages to PDF or other formats, search notebooks, and extract embedded audio or media files when OneNote exposes media paths.
+Your AI assistant should be able to work with them.
 
-This project targets **Microsoft OneNote desktop for Windows**, not OneNote for the web, Microsoft Graph, or Office.js add-ins.
+**OneNote Desktop Agent** connects Claude Code and Codex to Microsoft OneNote desktop on Windows. It uses the local OneNote COM API through Windows PowerShell, so an agent can see notebooks, read pages, create notes, export content, search, navigate, and extract media without a browser, without Microsoft Graph, and without a OneNote add-in.
 
-## Why This Exists
+It is built for **Microsoft OneNote desktop for Windows**. Not OneNote web. Not a cloud sync API. The real desktop app.
 
-Most OneNote automation paths assume cloud APIs, browser automation, or add-ins. OneNote Desktop Agent gives Claude Code and Codex a local, scriptable path into the desktop app by documenting the COM surface and wrapping common operations in PowerShell helpers.
+## The Problem
 
-The stable plugin and skill name is `onenote-desktop`. The public repository name is `onenote-desktop-agent`.
+OneNote is full of useful information, but to an AI assistant it is usually invisible.
 
-## Pain Points It Solves
+You can paste a page into chat. You can export a PDF by hand. You can click through notebooks and copy IDs one at a time. But that is not automation. That is you doing the integration work.
 
-- You want an AI assistant to work with your real OneNote desktop notebooks, but the assistant cannot see local notebook state.
-- You use OneNote desktop instead of OneNote web, Microsoft Graph, or cloud-first workflows.
-- You need to list notebooks, sections, and pages without clicking through the OneNote UI.
-- You need a machine-readable map of notebook structure before migration, cleanup, archiving, or review.
-- You need stable page IDs, section IDs, object IDs, or OneNote hyperlinks for automation.
-- You need to find the parent section or notebook for a page/object ID returned by search or page XML.
-- You want to read OneNote page content as XML so an agent can inspect or transform it carefully.
-- You need to preserve rich page structure, object IDs, author metadata, timestamps, tags, media references, and unknown XML while making targeted edits.
-- You need to create or update OneNote pages from scripts, meeting notes, research notes, logs, or generated summaries.
-- You need to generate a local control/status page inside OneNote so a human can inspect what the agent sees.
-- You need to open or create a local `.one` section for a reproducible automation test without touching existing notebooks.
-- You need to search OneNote content from a script and optionally include unindexed pages.
-- You need to search OneNote metadata, not just visible text.
-- You want to export OneNote pages or sections to PDF, XPS, Word, MHTML, `.one`, or `.onepkg` from an agent workflow.
-- You need batch export or audit workflows where page IDs are collected first, then published one at a time.
-- You need to extract embedded audio recordings or media files from OneNote pages for transcription, archiving, or review.
-- You need to fetch binary page content by callback ID from page XML.
-- You need to locate OneNote's default notebook folder, backup folder, or unfiled notes section from the installed desktop app.
-- You are trying to recover, inventory, or debug local OneNote files and cache locations without mutating them.
-- You need to compare OneNote cache, backup, audio-cache, or local notebook file signatures without parsing private note content.
-- You want local automation that does not require a browser session, a localhost service, a OneNote add-in, or Microsoft Graph permissions.
-- You need a repeatable way for Claude Code or Codex to check whether OneNote COM is installed and usable.
-- You want an agent to navigate OneNote desktop to a page or object so you can inspect the result in the app.
-- You want a script to open OneNote at the exact page or embedded object that an agent is discussing.
-- You need a safer alternative to blind file parsing: use OneNote COM and page XML first, and treat raw `.one` or cache probing as a last resort.
-- You want to keep private notes local while still letting an assistant help with organization, extraction, export, or page generation.
-- You need to debug whether a problem is OneNote installation, COM apartment state, open-notebook visibility, indexing, page XML shape, media paths, or cache/storage.
+OneNote Desktop Agent gives agents a clean local path into OneNote desktop:
 
-## What The OneNote COM Surface Unlocks
+- discover the notebook structure
+- read page XML
+- create and update pages
+- search page text and metadata
+- export pages and sections
+- open OneNote at the exact object being discussed
+- extract embedded audio and media when OneNote exposes the paths
 
-The helper wraps the repeatable, lower-risk operations that are easiest to validate:
+The stable plugin and skill name is `onenote-desktop`. The repository is `onenote-desktop-agent`.
+
+## What It Makes Possible
+
+### Give agents real notebook context
+
+List notebooks, sections, section groups, and pages without clicking through the OneNote UI. Build a machine-readable map before cleanup, migration, archiving, review, or export.
+
+### Work with page XML directly
+
+Read OneNote pages as XML so an agent can inspect structure instead of guessing from screenshots or copied text. Preserve namespaces, IDs, timestamps, tags, media references, author metadata, and unknown elements while making targeted edits.
+
+### Create useful notes from scripts
+
+Generate pages for meeting notes, research summaries, logs, checklists, status pages, or agent output. Create a local test `.one` section when you want a reproducible workflow that does not touch existing notebooks.
+
+### Search and link precisely
+
+Search page text, search metadata, resolve parent hierarchy IDs, and generate durable OneNote hyperlinks. When an agent finds something, it can navigate the desktop app to that exact page or object.
+
+### Export without the clipboard
+
+Publish notebooks, sections, or pages to PDF, XPS, Word, MHTML, EMF, `.one`, or `.onepkg`. Collect page IDs first, then export the exact pages you need.
+
+### Pull out recordings and media
+
+Inspect page XML for `MediaFile` entries and copy embedded audio or media from OneNote source/cache paths when available. Useful for transcription, review, archiving, and recovery.
+
+### Debug local OneNote safely
+
+Check whether OneNote desktop is installed, whether COM can be created, whether PowerShell is running in STA mode, which notebooks are visible, where OneNote stores default notebooks/backups/unfiled notes, and what cache or backup files exist. The storage probe is read-only.
+
+### Keep private notes local
+
+This is local desktop automation. There is no hosted service, no browser session, no localhost bridge, no Office.js add-in, and no Microsoft Graph permission flow.
+
+## What The COM Surface Unlocks
+
+The helper wraps the repeatable, lower-risk OneNote desktop COM operations:
 
 - `GetHierarchy`: inventory notebooks, section groups, sections, and pages.
 - `GetPageContent`: read page XML for inspection, extraction, and targeted edits.
@@ -57,83 +75,37 @@ The helper wraps the repeatable, lower-risk operations that are easiest to valid
 - `GetHierarchyParent`: climb from a page or object ID back to its parent.
 - `GetHyperlinkToObject`: create durable OneNote links for pages or page objects.
 - `GetSpecialLocation`: resolve default notebook, backup, and unfiled-notes locations.
-- `NavigateTo`: bring the desktop OneNote app to a target page or object.
+- `NavigateTo`: bring OneNote desktop to a target page or object.
 - `Publish`: export notebooks, sections, or pages to supported desktop formats.
 - `GetBinaryPageContent`: retrieve binary content referenced by callback IDs in page XML.
 - `OpenHierarchy`: open or create local notebook/section files for controlled tests.
 
-The underlying desktop interop also exposes higher-risk or less common calls such as `CloseNotebook`, `DeleteHierarchy`, `DeletePageContent`, `OpenPackage`, and `UpdateHierarchy`. Those are intentionally not promoted as default workflows. Use raw COM for them only when the user explicitly asks for that operation, the target IDs are verified, and the script is small enough to review.
-
-## Features
-
-- Check whether Microsoft OneNote desktop and COM automation are available.
-- List visible notebooks, sections, section groups, and pages.
-- Read raw OneNote page XML with parsed page and object IDs.
-- Create pages and write basic page content.
-- Update page XML while preserving OneNote namespaces and IDs.
-- Search pages and metadata through the OneNote COM API.
-- Resolve parent hierarchy IDs, OneNote hyperlinks, and special OneNote folders.
-- Navigate OneNote desktop to a page, section, or object.
-- Export notebooks, sections, or pages to PDF, XPS, Word, MHTML, EMF, `.one`, or `.onepkg`.
-- Fetch binary page content by callback ID when page XML exposes it.
-- Extract embedded media or audio recordings from `MediaFile` page XML entries.
-- Probe likely OneNote local storage and cache locations read-only for troubleshooting.
-
-## Requirements
-
-- Windows.
-- Microsoft OneNote desktop with COM automation available.
-- Windows PowerShell via `powershell.exe`.
-- Claude Code or Codex if installing as an agent plugin.
-
-OneNote COM calls should run under single-threaded apartment PowerShell:
-
-```powershell
-powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\skills\onenote-desktop\scripts\Invoke-OneNoteCom.ps1 -Operation check-install
-```
+The desktop interop also exposes higher-risk calls such as `CloseNotebook`, `DeleteHierarchy`, `DeletePageContent`, `OpenPackage`, and `UpdateHierarchy`. Those are intentionally not promoted as default workflows. Use raw COM for them only when the target IDs are verified and the user explicitly asks for that operation.
 
 ## Install In Claude Code
-
-After this repository is published at `takhoffman/onenote-desktop-agent`, install it as a Claude Code plugin:
 
 ```powershell
 claude plugin marketplace add takhoffman/onenote-desktop-agent
 claude plugin install onenote-desktop@takhoffman
 ```
 
-For local testing from the repository root:
-
-```powershell
-claude plugin install .
-```
-
-Start a fresh Claude Code session and test:
+Test it in a fresh Claude Code session:
 
 ```text
 Use the onenote-desktop skill to check my OneNote desktop COM install.
 ```
 
-## Install In Codex
+For local development from the repository root:
 
-After publishing this repository to GitHub, install it with the Codex CLI:
+```powershell
+claude plugin install .
+```
+
+## Install In Codex
 
 ```powershell
 codex plugin marketplace add https://github.com/takhoffman/onenote-desktop-agent
 codex plugin add onenote-desktop@takhoffman
-```
-
-For Codex Desktop, open Plugins, add the marketplace URL, then install `onenote-desktop`:
-
-```text
-https://github.com/takhoffman/onenote-desktop-agent
-```
-
-For local Codex Desktop testing, install the committed package into the personal plugin cache and restart Codex if needed:
-
-```powershell
-$target = "$env:USERPROFILE\.codex\plugins\cache\personal\onenote-desktop\0.1.0"
-New-Item -ItemType Directory -Force -Path $target | Out-Null
-git archive --format=tar HEAD | tar -x -C $target
 ```
 
 In a new Codex session, ask:
@@ -142,9 +114,15 @@ In a new Codex session, ask:
 Use the onenote-desktop skill to list my visible OneNote notebooks.
 ```
 
-## Direct PowerShell Usage
+For Codex Desktop, open Plugins, add this marketplace URL, then install `onenote-desktop`:
 
-You can also run the helper script without Claude Code or Codex.
+```text
+https://github.com/takhoffman/onenote-desktop-agent
+```
+
+## Use It Directly
+
+You can also run the PowerShell helper without Claude Code or Codex.
 
 Check OneNote desktop and COM:
 
@@ -182,26 +160,37 @@ Extract embedded media from a page:
 powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\skills\onenote-desktop\scripts\Invoke-OneNoteCom.ps1 -Operation extract-media -PageId "<page-id>" -OutputDir ".\media-export"
 ```
 
+## Requirements
+
+- Windows.
+- Microsoft OneNote desktop with COM automation available.
+- Windows PowerShell via `powershell.exe`.
+- Claude Code or Codex if installing as an agent plugin.
+
+OneNote COM calls should run under single-threaded apartment PowerShell:
+
+```powershell
+powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File .\skills\onenote-desktop\scripts\Invoke-OneNoteCom.ps1 -Operation check-install
+```
+
 ## Package Layout
 
 - `.claude-plugin/plugin.json`: Claude Code plugin manifest.
 - `.claude-plugin/marketplace.json`: Claude Code marketplace descriptor.
 - `.agents/plugins/marketplace.json`: Codex marketplace descriptor.
-- `.codex-plugin/plugin.json`: Codex plugin manifest.
+- `.codex-plugin/plugin.json`: root Codex plugin manifest.
 - `plugins/onenote-desktop/`: installable Codex marketplace package.
-- `skills/onenote-desktop/SKILL.md`: shared skill instructions for Claude Code and Codex.
+- `skills/onenote-desktop/SKILL.md`: shared skill instructions.
 - `skills/onenote-desktop/scripts/Invoke-OneNoteCom.ps1`: main OneNote COM helper.
 - `skills/onenote-desktop/scripts/Probe-OneNoteCom.ps1`: COM method and enum probe.
 - `skills/onenote-desktop/scripts/Probe-OneNoteStorage.ps1`: read-only OneNote storage/cache inventory probe.
-- `skills/onenote-desktop/references/`: implementation notes for raw COM, page XML, media extraction, and storage boundaries.
+- `skills/onenote-desktop/references/`: notes for raw COM, page XML, media extraction, and storage boundaries.
 
 ## Safety And Privacy
 
-OneNote Desktop Agent runs locally and does not require a localhost server, browser automation, Microsoft Graph, or an Office.js add-in.
-
 Runtime output can include private notebook names, page IDs, local file paths, note text, exported documents, and extracted media. This repository ignores built packages, probe output, OneNote section files, exported documents, and media output so private notebook data is not staged accidentally.
 
-The storage probe is read-only. Normal automation should prefer OneNote COM and page XML over raw cache or `.one` file inspection.
+Normal automation should prefer OneNote COM and page XML over raw cache or `.one` file inspection.
 
 For page edits, read existing XML first, preserve namespaces and IDs, update only the intended content, then read the page again to verify.
 
