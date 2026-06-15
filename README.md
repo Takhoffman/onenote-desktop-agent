@@ -163,6 +163,13 @@ For page edits, read existing XML first, preserve namespaces and IDs, update onl
 - `skills/onenote-desktop/scripts/Probe-OneNoteStorage.ps1`: read-only OneNote storage/cache inventory probe.
 - `skills/onenote-desktop/references/`: notes for raw COM, page XML, media extraction, and storage boundaries.
 
+The root `skills/onenote-desktop/` directory is the source of truth. The Codex marketplace package under `plugins/onenote-desktop/` carries a synced copy for package installation. After changing the root skill, run:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\sync-plugin-package.ps1
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\check-plugin-package.ps1
+```
+
 ## Status
 
 This is an early public package. The helper scripts cover common non-destructive OneNote COM operations. Destructive operations such as deleting notebooks, sections, pages, or page content are intentionally not wrapped as default workflows.
