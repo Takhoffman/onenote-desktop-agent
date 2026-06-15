@@ -1,8 +1,9 @@
 {
-  "name": "local-onenote-desktop",
-  "description": "Local Claude Code plugins for automating Microsoft OneNote desktop.",
+  "name": "takhoffman",
+  "description": "TakHoffman agent plugins for desktop automation.",
   "owner": {
-    "name": "Local"
+    "name": "TakHoffman",
+    "url": "https://github.com/takhoffman"
   },
   "plugins": [
     {

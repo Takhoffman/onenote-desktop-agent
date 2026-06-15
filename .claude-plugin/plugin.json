@@ -3,14 +3,20 @@
   "version": "0.1.0",
   "description": "Automate Microsoft OneNote desktop through Windows PowerShell COM.",
   "author": {
-    "name": "Local"
+    "name": "TakHoffman",
+    "url": "https://github.com/takhoffman"
   },
+  "homepage": "https://github.com/takhoffman/onenote-desktop-agent",
+  "repository": "https://github.com/takhoffman/onenote-desktop-agent",
+  "license": "UNLICENSED",
   "keywords": [
     "onenote",
     "windows",
     "powershell",
     "com",
     "notes",
-    "automation"
+    "automation",
+    "codex",
+    "claude-code"
   ]
 }
