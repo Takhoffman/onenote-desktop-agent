@@ -1,0 +1,33 @@
+dist/
+*.skill
+
+# Runtime output that may include notebook names, page IDs, local paths, exports, or media.
+exports/
+export/
+probe-output/
+storage-probe/
+onenote-com-probe/
+onenote-media-export/
+media-export/
+*.one
+*.onepkg
+*.onetoc2
+*.pdf
+*.xps
+*.mht
+*.mhtml
+*.doc
+*.docx
+*.wma
+*.m4a
+*.mp3
+*.mp4
+*.wav
+
+# Local/editor state.
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+*.tmp
