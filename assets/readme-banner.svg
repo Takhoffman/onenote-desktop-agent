@@ -1,78 +1,129 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="520" viewBox="0 0 1600 520" role="img" aria-labelledby="title desc">
   <title id="title">OneNote Desktop Agent</title>
-  <desc id="desc">A banner for a Claude Code and Codex plugin that automates Microsoft OneNote desktop through Windows PowerShell COM.</desc>
+  <desc id="desc">A minimal README banner for OneNote Desktop Agent, a Claude Code and Codex plugin for Microsoft OneNote desktop automation.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f8fafc"/>
-      <stop offset="0.52" stop-color="#eef7f6"/>
-      <stop offset="1" stop-color="#f4effb"/>
-    </linearGradient>
-    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#ffffff"/>
-      <stop offset="1" stop-color="#f4f7fb"/>
+      <stop offset="1" stop-color="#f6f7fb"/>
     </linearGradient>
-    <linearGradient id="notebook" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#8f4bd8"/>
-      <stop offset="1" stop-color="#56359f"/>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c3fc8"/>
+      <stop offset="1" stop-color="#4f2b91"/>
     </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#243042" flood-opacity="0.16"/>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#27d6cf"/>
+      <stop offset="1" stop-color="#0f8f90"/>
+    </linearGradient>
+    <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="22" stdDeviation="26" flood-color="#111827" flood-opacity="0.16"/>
+    </filter>
+    <filter id="card-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#111827" flood-opacity="0.12"/>
     </filter>
   </defs>
 
-  <rect width="1600" height="520" rx="0" fill="url(#bg)"/>
-  <path d="M0 410 C260 330 430 470 690 382 C960 290 1130 355 1600 250 L1600 520 L0 520 Z" fill="#dff4ef" opacity="0.8"/>
-  <path d="M0 84 C230 142 392 20 650 86 C940 160 1110 96 1600 134 L1600 0 L0 0 Z" fill="#efe6fa" opacity="0.75"/>
+  <rect width="1600" height="520" fill="#fbfbfc"/>
+  <rect x="0" y="0" width="1600" height="520" fill="url(#page)"/>
+  <path d="M0 424 C250 376 436 478 704 402 C984 322 1190 326 1600 250 L1600 520 L0 520 Z" fill="#eef8f7"/>
 
-  <g transform="translate(870 86)" filter="url(#shadow)">
-    <rect x="0" y="0" width="540" height="326" rx="18" fill="#273140"/>
-    <rect x="24" y="24" width="492" height="278" rx="10" fill="url(#screen)"/>
-    <rect x="86" y="302" width="368" height="24" rx="6" fill="#1f2937"/>
-    <rect x="186" y="326" width="168" height="38" rx="8" fill="#334155"/>
-    <rect x="128" y="362" width="284" height="18" rx="9" fill="#475569"/>
+  <g transform="translate(92 94)">
+    <text x="0" y="78" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="74" font-weight="800" fill="#151922">OneNote</text>
+    <text x="0" y="158" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="74" font-weight="800" fill="#151922">Desktop Agent</text>
+    <rect x="4" y="208" width="96" height="5" rx="2.5" fill="url(#purple)"/>
+    <text x="0" y="282" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="35" font-weight="400" fill="#303846">Your notes. Now </text>
+    <text x="296" y="282" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="35" font-weight="700" fill="#6b35b6">scriptable.</text>
 
-    <g transform="translate(62 62)">
-      <rect x="0" y="0" width="190" height="202" rx="14" fill="url(#notebook)"/>
-      <rect x="34" y="0" width="156" height="202" rx="14" fill="#ffffff" opacity="0.94"/>
-      <rect x="0" y="0" width="34" height="202" rx="14" fill="#6d3dbb"/>
-      <circle cx="17" cy="42" r="4" fill="#d8c8f0"/>
-      <circle cx="17" cy="86" r="4" fill="#d8c8f0"/>
-      <circle cx="17" cy="130" r="4" fill="#d8c8f0"/>
-      <rect x="58" y="44" width="96" height="12" rx="6" fill="#5b35a8"/>
-      <rect x="58" y="78" width="108" height="8" rx="4" fill="#94a3b8"/>
-      <rect x="58" y="102" width="86" height="8" rx="4" fill="#94a3b8"/>
-      <rect x="58" y="126" width="116" height="8" rx="4" fill="#94a3b8"/>
-      <rect x="58" y="150" width="72" height="8" rx="4" fill="#94a3b8"/>
-    </g>
-
-    <g transform="translate(300 78)">
-      <rect x="0" y="0" width="164" height="118" rx="12" fill="#111827"/>
-      <circle cx="24" cy="24" r="5" fill="#ef4444"/>
-      <circle cx="42" cy="24" r="5" fill="#f59e0b"/>
-      <circle cx="60" cy="24" r="5" fill="#22c55e"/>
-      <text x="24" y="61" font-family="Consolas, 'SFMono-Regular', monospace" font-size="17" fill="#67e8f9">&gt; COM</text>
-      <text x="24" y="88" font-family="Consolas, 'SFMono-Regular', monospace" font-size="17" fill="#c4b5fd">STA OK</text>
-    </g>
-
-    <g fill="none" stroke="#0f766e" stroke-width="4" stroke-linecap="round" opacity="0.9">
-      <path d="M276 224 C310 190 348 184 390 206"/>
-      <path d="M248 170 C286 156 312 138 334 112"/>
-      <path d="M210 242 C256 260 308 270 366 250"/>
-    </g>
-    <g fill="#0f766e">
-      <circle cx="276" cy="224" r="11"/>
-      <circle cx="390" cy="206" r="11"/>
-      <circle cx="334" cy="112" r="11"/>
-      <circle cx="366" cy="250" r="11"/>
+    <g transform="translate(0 336)" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" fill="#3a4250">
+      <g>
+        <rect x="0" y="-24" width="42" height="42" rx="9" fill="#f2ebfb" stroke="#6b35b6" stroke-width="2"/>
+        <path d="M15 -15 h16 M15 -6 h16 M15 3 h16" stroke="#6b35b6" stroke-width="2.6" stroke-linecap="round"/>
+        <text x="60" y="3">Real desktop OneNote</text>
+      </g>
+      <g transform="translate(286 0)">
+        <path d="M0 -1 h38 M38 -1 l-12 -12 M38 -1 l-12 12" fill="none" stroke="#0f9b9c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="58" y="3">PowerShell COM</text>
+      </g>
+      <g transform="translate(512 0)">
+        <rect x="0" y="-24" width="42" height="42" rx="9" fill="#eaf8f7" stroke="#0f9b9c" stroke-width="2"/>
+        <path d="M12 -2 l8 -8 M20 -10 l8 8 M14 8 h14" fill="none" stroke="#0f9b9c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="60" y="3">Agents</text>
+      </g>
     </g>
   </g>
 
-  <g transform="translate(120 126)">
-    <rect x="0" y="-22" width="224" height="38" rx="19" fill="#0f766e" opacity="0.12"/>
-    <text x="20" y="4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#0f766e">WINDOWS • POWERSHELL • COM</text>
-    <text x="0" y="88" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="74" font-weight="800" fill="#172033">OneNote</text>
-    <text x="0" y="168" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="74" font-weight="800" fill="#56359f">Desktop Agent</text>
-    <text x="4" y="222" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28" fill="#334155">Claude Code and Codex automation</text>
-    <text x="4" y="260" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28" fill="#334155">for Microsoft OneNote desktop</text>
+  <g transform="translate(770 76)" filter="url(#soft-shadow)">
+    <rect x="0" y="0" width="618" height="358" rx="22" fill="#161b24"/>
+    <rect x="26" y="24" width="566" height="310" rx="13" fill="#ffffff"/>
+
+    <rect x="26" y="24" width="566" height="48" rx="13" fill="#fafafa"/>
+    <rect x="26" y="59" width="566" height="1" fill="#e5e7eb"/>
+    <circle cx="52" cy="48" r="6" fill="#6b35b6"/>
+    <text x="72" y="53" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#202734">Project Notebook</text>
+    <rect x="438" y="36" width="126" height="22" rx="7" fill="#f2f3f6"/>
+    <text x="456" y="52" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" fill="#697386">Search</text>
+
+    <rect x="26" y="72" width="134" height="262" fill="#f6f4f9"/>
+    <text x="50" y="104" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="#252b35">Notebooks</text>
+    <g font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#333b48">
+      <rect x="48" y="124" width="92" height="30" rx="7" fill="#e8e1f4"/>
+      <rect x="50" y="131" width="8" height="16" rx="2" fill="#6b35b6"/>
+      <text x="66" y="144">Projects</text>
+      <rect x="50" y="169" width="8" height="16" rx="2" fill="#0f9b9c"/>
+      <text x="66" y="182">Research</text>
+      <rect x="50" y="207" width="8" height="16" rx="2" fill="#f27a35"/>
+      <text x="66" y="220">Meetings</text>
+      <rect x="50" y="245" width="8" height="16" rx="2" fill="#2677c9"/>
+      <text x="66" y="258">Archive</text>
+    </g>
+
+    <rect x="184" y="92" width="120" height="32" rx="7" fill="#eeeaf6"/>
+    <rect x="188" y="100" width="5" height="16" rx="2" fill="#6b35b6"/>
+    <text x="204" y="113" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#252b35">Overview</text>
+    <g font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475163">
+      <rect x="188" y="144" width="5" height="16" rx="2" fill="#0f9b9c"/>
+      <text x="204" y="157">Planning</text>
+      <rect x="188" y="184" width="5" height="16" rx="2" fill="#334155"/>
+      <text x="204" y="197">Architecture</text>
+      <rect x="188" y="224" width="5" height="16" rx="2" fill="#8a4dd4"/>
+      <text x="204" y="237">Notes</text>
+    </g>
+
+    <g transform="translate(338 106)" font-family="Inter, Segoe UI, Arial, sans-serif">
+      <text x="0" y="0" font-size="24" font-weight="700" fill="#202734">Overview</text>
+      <rect x="0" y="22" width="190" height="2" rx="1" fill="#ded6ec"/>
+      <text x="0" y="70" font-size="15" font-weight="700" fill="#6b35b6">Project summary</text>
+      <text x="0" y="102" font-size="14" fill="#323a46">One place for notes,</text>
+      <text x="0" y="124" font-size="14" fill="#323a46">decisions, and actions.</text>
+      <circle cx="5" cy="166" r="4" fill="#0f9b9c"/>
+      <text x="22" y="171" font-size="14" fill="#323a46">Capture ideas</text>
+      <circle cx="5" cy="196" r="4" fill="#0f9b9c"/>
+      <text x="22" y="201" font-size="14" fill="#323a46">Find pages</text>
+      <circle cx="5" cy="226" r="4" fill="#0f9b9c"/>
+      <text x="22" y="231" font-size="14" fill="#323a46">Export cleanly</text>
+    </g>
+  </g>
+
+  <g transform="translate(1050 338)" filter="url(#card-shadow)">
+    <rect x="0" y="0" width="272" height="84" rx="14" fill="#111827"/>
+    <circle cx="24" cy="24" r="5" fill="#fb7185"/>
+    <circle cx="42" cy="24" r="5" fill="#fbbf24"/>
+    <circle cx="60" cy="24" r="5" fill="#34d399"/>
+    <text x="24" y="56" font-family="Consolas, 'SFMono-Regular', monospace" font-size="14" fill="#67e8f9">&gt; check-install</text>
+    <text x="24" y="76" font-family="Consolas, 'SFMono-Regular', monospace" font-size="14" fill="#c4b5fd">COM ready · STA ready</text>
+  </g>
+
+  <g transform="translate(1388 224)">
+    <path d="M0 0 C44 0 48 -48 92 -48" fill="none" stroke="#0f9b9c" stroke-width="4"/>
+    <path d="M0 0 C44 0 48 58 92 58" fill="none" stroke="#6b35b6" stroke-width="4"/>
+    <circle cx="0" cy="0" r="8" fill="#ffffff" stroke="#0f9b9c" stroke-width="4"/>
+  </g>
+
+  <g transform="translate(1472 146)" filter="url(#card-shadow)">
+    <rect x="0" y="0" width="96" height="52" rx="14" fill="#ffffff"/>
+    <text x="48" y="32" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="#202734">Claude</text>
+  </g>
+  <g transform="translate(1472 252)" filter="url(#card-shadow)">
+    <rect x="0" y="0" width="96" height="52" rx="14" fill="#ffffff"/>
+    <text x="48" y="32" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="#202734">Codex</text>
   </g>
 </svg>
